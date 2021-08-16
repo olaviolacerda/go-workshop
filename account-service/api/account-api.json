@@ -1,0 +1,265 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Account API",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://github.com/olaviolacerda"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7001",
+      "description": "development server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "account"
+    }
+  ],
+  "paths": {
+    "/v1/accounts/{code}/balance": {
+      "get": {
+        "tags": [
+          "account"
+        ],
+        "description": "Returns the account's balance.",
+        "operationId": "getBalance",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/balance_response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/accounts": {
+      "post": {
+        "tags": [
+          "account"
+        ],
+        "description": "Create a new account",
+        "operationId": "createAccount",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/account_request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/account_response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/accounts/deposit": {
+      "post": {
+        "tags": [
+          "account"
+        ],
+        "description": "Creates a deposit operation on an account",
+        "operationId": "createDeposit",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/deposit_request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/accounts/transfer": {
+      "patch": {
+        "tags": [
+          "account"
+        ],
+        "description": "Creates a transfer among accounts",
+        "operationId": "createTransfer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/transfer_request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/message_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid operation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/message_response"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "account_request": {
+        "type": "object",
+        "required": [
+          "document",
+          "name",
+          "email",
+          "age",
+          "currency"
+        ],
+        "properties": {
+          "document": {
+            "type": "string",
+            "minimum": 11
+          },
+          "name": {
+            "type": "string",
+            "minimum": 5
+          },
+          "email": {
+            "type": "string",
+            "minimum": 5
+          },
+          "age": {
+            "type": "number",
+            "minimum": 16
+          },
+          "currency": {
+            "type": "string",
+            "maximum": 3
+          }
+        }
+      },
+      "account_response": {
+        "type": "object",
+        "properties": {
+          "account_code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "deposit_request": {
+        "type": "object",
+        "required": [
+          "account_code"
+        ],
+        "properties": {
+          "account_code": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number",
+            "format": "double",
+            "minimum": 1.0
+          }
+        }
+      },
+      "transfer_request": {
+        "type": "object",
+        "properties": {
+          "from_account": {
+            "type": "string"
+          },
+          "to_account": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number",
+            "format": "double",
+            "minimum": 1.0
+          }
+        }
+      },
+      "balance_response": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string"
+          },
+          "balance": {
+            "type": "number",
+            "format": "double"
+          },
+          "last_update": {
+            "type": "string"
+          }
+        }
+      },
+      "message_response": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

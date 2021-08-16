@@ -1,0 +1,6 @@
+{
+    "folders": [
+        { "path": "account-service" },
+        { "path": "exchange-service" },
+    ]
+}
