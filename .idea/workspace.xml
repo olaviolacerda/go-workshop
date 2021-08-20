@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16b7df14-de3c-4a04-8697-3f03e7385f0c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/account-service/internal/common/date.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/go-workshop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/go-workshop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account-service/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account-service/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account-service/internal/application/account_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/internal/application/account_service.go" afterDir="false" />
-    </list>
+    <list default="true" id="16b7df14-de3c-4a04-8697-3f03e7385f0c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,7 +77,7 @@
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../personal/seis-e-onibus-email-api" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
