@@ -2,6 +2,7 @@ package application
 
 import (
 	"errors"
+	"github.com/olaviolacerda/account/internal/common"
 	"log"
 	"time"
 
@@ -49,12 +50,15 @@ func (as AccountService) CreateAccount(data AccountRequest) error {
 	return nil
 }
 
-func retrieveNonEmptyUpdatedAt(account domain.Account) string {
+func retrieveLastUpdated(account domain.Account) string {
+	var lastUpdated time.Time
+	lastUpdated = *account.UpdatedAt
+
 	if account.UpdatedAt == nil {
-		return account.CreatedAt.String()
+		lastUpdated = account.CreatedAt
 	}
 
-	return account.UpdatedAt.String()
+	return common.DateToStr(lastUpdated)
 }
 
 func (as AccountService) GetAccount(id string) (AccountBalanceResponse, error) {
