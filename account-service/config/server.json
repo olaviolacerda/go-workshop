@@ -1,0 +1,6 @@
+{
+  "host": "0.0.0.0",
+  "port": "7001",
+  "exchange_url": "http://localhost:7005",
+  "db_file": "accounts.db"
+}

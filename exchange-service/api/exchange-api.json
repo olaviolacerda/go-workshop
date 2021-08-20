@@ -1,0 +1,126 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Exchange API",
+    "description": "",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://github.com/olaviolacerda"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7005",
+      "description": "development server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "exchange"
+    }
+  ],
+  "paths": {
+    "/v1/exchange/currencies": {
+      "get": {
+        "tags": [
+          "exchange"
+        ],
+        "description": "Returns a list of all supported currencies.",
+        "operationId": "getCurrencies",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/currency"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/exchange/quotation": {
+      "get": {
+        "description": "Returns quotation value among currencies",
+        "operationId": "getQuotation",
+        "tags": [
+          "exchange"
+        ],
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "val",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/quotation"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "currency": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "quotation": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      }
+    }
+  }
+}
